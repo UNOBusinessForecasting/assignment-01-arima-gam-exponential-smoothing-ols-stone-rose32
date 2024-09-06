@@ -23,9 +23,9 @@ model = Prophet(changepoint_prior_scale=0.5)
 
 modelFit = model.fit(trips)
 
-future = model.make_future_dataframe(freq = 'H', periods=744)
+future = model.make_future_dataframe(freq = 'h', periods=744)
 predData = model.predict(future)
 
-pred = predData[['ds', 'yhat']]
+pred = predData['yhat'].values[-744:]
 
 pred
